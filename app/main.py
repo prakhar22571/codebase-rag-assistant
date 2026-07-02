@@ -218,6 +218,10 @@ with gr.Blocks(
             )
 
 
+# Streaming outputs (chat + indexing log) require the queue — mount_gradio_app
+# doesn't call .launch(), so the auto-enable that normally happens there is skipped.
+demo.queue()
+
 # Mount Gradio on FastAPI so /health and the UI coexist on the same port
 app = gr.mount_gradio_app(fastapi_app, demo, path="/")
 

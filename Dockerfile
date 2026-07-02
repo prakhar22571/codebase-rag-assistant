@@ -17,7 +17,7 @@ WORKDIR /app
 COPY --chown=user requirements.txt .
 
 # Install torch CPU-only first to avoid pulling CUDA (~700MB vs ~3GB)
-RUN pip install --no-cache-dir torch==2.3.1 \
+RUN pip install --no-cache-dir torch==2.6.0 \
     --index-url https://download.pytorch.org/whl/cpu
 
 RUN pip install --no-cache-dir -r requirements.txt \

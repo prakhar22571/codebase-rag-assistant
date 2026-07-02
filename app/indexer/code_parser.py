@@ -272,7 +272,10 @@ class CodeParser:
                     new_start = i
                     break
 
-            start = new_start if new_start < end else end
+            next_start = new_start if new_start < end else end
+            # Guarantee forward progress even if a single line's token count
+            # alone exceeds overlap_tokens (would otherwise stall start == prev start).
+            start = next_start if next_start > start else start + 1
 
         for w in windows:
             w.total_chunks = len(windows)

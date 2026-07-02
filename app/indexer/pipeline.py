@@ -97,7 +97,7 @@ class IndexingPipeline:
         self,
         chunks: list[Chunk],
         label: str,
-        batch_size: int = 32,
+        batch_size: int = 8,
     ) -> Iterator[str]:
         if not chunks:
             return
